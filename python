@@ -1,0 +1,38 @@
+def validate_credit_card(card_number):
+    # Remove non-numeric characters
+    card_number = ''.join(c for c in card_number if c.isdigit())
+    
+    # Check if the number contains only digits
+    if not card_number.isdigit():
+        return False
+    
+    # Check if the number is of valid length
+    if len(card_number) < 13 or len(card_number) > 19:
+        return False
+    
+    # Reverse the number
+    reversed_num = card_number[::-1]
+    
+    # Double every second digit
+    doubled_num = ''
+    for i, digit in enumerate(reversed_num):
+        if i % 2 == 1:
+            doubled_digit = int(digit) * 2
+            if doubled_digit > 9:
+                doubled_digit -= 9
+            doubled_num += str(doubled_digit)
+        else:
+            doubled_num += digit
+    
+    # Sum all the digits
+    sum_digits = sum(int(d) for d in doubled_num)
+    
+    # Check if the sum is divisible by 10
+    return sum_digits % 10 == 0
+
+# Example usage
+card_number = '1234 5678 9012 3456'  # Replace this with your credit card number
+if validate_credit_card(card_number):
+    print('Credit card is valid.')
+else:
+    print('Credit card is invalid.')
