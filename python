@@ -1,5 +1,5 @@
 def validate_credit_card(card_number):
-    # Remove non-numeric characters0010
+    # Remove non-numeric characters00
     card_number = ''.join(c for c in card_number if c.isdigit())
     
     # Check if the number contains only digits.
