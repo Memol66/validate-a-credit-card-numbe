@@ -1,4 +1,4 @@
-# 00000000000
+# 01
 def validate_credit_card(card_number):
     # Remove non-numeric characters
     card_number = ''.join(c for c in card_number if c.isdigit())
